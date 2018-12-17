@@ -19,6 +19,7 @@ import tech.pegasys.artemis.util.uint.Int256;
 import tech.pegasys.artemis.util.uint.UInt256;
 import tech.pegasys.artemis.util.uint.UInt256Bytes;
 
+import java.util.Arrays;
 
 
 /**
@@ -42,11 +43,13 @@ public interface Bytes48 extends BytesValue {
    */
   static Bytes48 intToBytes48(int seed) {
     byte[] bytes = new byte[48];
-    for (int i = 0; i < 48; i++) {
-      if (i < 44) { bytes[i] = (byte) 0; }
-      else {
-        bytes[i] = (byte) ((seed >> ((47-i) * 8)) & 0xFF);
-      }
+    if(seed < 0) {
+      Arrays.fill(bytes, 0, 44, (byte) 0xFF);
+    } else {
+      Arrays.fill(bytes, 0, 44, (byte) 0x0);
+    }
+    for(int i = 44; i < 48; ++i) {
+      bytes[i] = (byte) ((seed >> ((47-i) * 8)) & 0xFF);
     }
     return Bytes48.wrap(bytes);
   }
