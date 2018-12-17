@@ -19,7 +19,6 @@ import tech.pegasys.artemis.util.uint.Int256;
 import tech.pegasys.artemis.util.uint.UInt256;
 import tech.pegasys.artemis.util.uint.UInt256Bytes;
 
-import java.util.Arrays;
 
 
 /**
@@ -35,17 +34,19 @@ public interface Bytes48 extends BytesValue {
   Bytes48 ZERO = wrap(new byte[48]);
 
   /**
-   * Converts int to Bytes48.
+   * Converts int to Bytes48 in Big Endian byte order.
    *
    * @param seed  converted
    * @return      converted Bytes48
    * @throws IllegalArgumentException if seed is a negative value.
    */
   static Bytes48 intToBytes48(int seed) {
-    checkArgument(seed > 0, "Expected positive seed but got %s", seed);
     byte[] bytes = new byte[48];
     for (int i = 0; i < 48; i++) {
-      bytes[i] = (byte) ((seed >> ((47 - i) * 8)) & 0xFF);
+      if (i < 44) { bytes[i] = (byte) 0; }
+      else {
+        bytes[i] = (byte) ((seed >> ((47-i) * 8)) & 0xFF);
+      }
     }
     return Bytes48.wrap(bytes);
   }

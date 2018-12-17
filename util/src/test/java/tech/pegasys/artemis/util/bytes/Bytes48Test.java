@@ -33,12 +33,12 @@ public class Bytes48Test {
   @Test
   public void convertIntToBytes48() {
     Bytes48 expected = Bytes48.wrap(new byte[]
-        {(byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,
-            (byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,
-            (byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,
-            (byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,
-            (byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,
-            (byte) 20, (byte) 103, (byte) -62, (byte) 41, (byte) 20, (byte) 103, (byte) -62, (byte) 41,});
+        {(byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
+            (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
+            (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
+            (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
+            (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 0,
+            (byte) 0, (byte) 0, (byte) 0, (byte) 0, (byte) 20, (byte) 103, (byte) -62, (byte) 41});
     Bytes48 actual =
         intToBytes48(342344233);
     assertThat(actual).isEqualTo(expected);
